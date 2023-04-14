@@ -17,16 +17,19 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    manix
+    ripgrep
+    tree
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    (pkgs.nerdfonts.override {
+    (nerdfonts.override {
       fonts = [
         "FiraCode"
         "Hack"
@@ -58,6 +61,7 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    #".config/karabiner/karabiner.json".source = hosts/theutz/karabiner/karabiner.json;
   };
 
   # You can also manage environment variables but you will have to manually
@@ -201,8 +205,8 @@
       macos_option_as_alt = "both";
     };
   };
-
   programs.lsd.enable = true;
-
   programs.gh.enable = true;
+  programs.direnv.enable = true;
+  programs.zoxide.enable = true;
 }

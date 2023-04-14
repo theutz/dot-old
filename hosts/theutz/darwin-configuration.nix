@@ -27,4 +27,9 @@
       home = /Users/michael;
     };
   };
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
+  services.karabiner-elements.enable = true;
 }
