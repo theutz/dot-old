@@ -24,6 +24,7 @@
     manix
     ripgrep
     tree
+    ranger
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -61,7 +62,8 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    #".config/karabiner/karabiner.json".source = hosts/theutz/karabiner/karabiner.json;
+    ".config/karabiner/karabiner.json".source = karabiner/karabiner.json;
+    ".config/karabiner/assets/complex_modifications".source = karabiner/complex_modifications;
   };
 
   # You can also manage environment variables but you will have to manually
@@ -206,6 +208,7 @@
       macos_option_as_alt = "both";
     };
   };
+  programs.nnn.enable = true;
   programs.lsd.enable = true;
   programs.gh.enable = true;
   programs.direnv.enable = true;
