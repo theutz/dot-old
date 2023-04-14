@@ -171,6 +171,7 @@
       vim-tmux-focus-events
       vim-tmux-navigator
     ];
+    mouse = true;
     extraConfig = ''
       TMUX_FZF_LAUNCH_KEY="C-f"
     '';
@@ -183,7 +184,7 @@
     theme = "Grape";
     font = {
       name = "Berkeley Mono";
-      size = 17;
+      size = 14;
     };
     keybindings = { };
     settings = {
