@@ -81,12 +81,9 @@
   programs.zsh = {
     enable = true;
     shellAliases = rec {
-      hm = "home-manager";
-      hms = "${hm} switch";
-      hme = "${hm} edit";
-      dr = "darwin-rebuild";
-      drs = "${dr} switch";
-      dre = "${dr} edit";
+      dot = "nvim ~/dot";
+      dots = "darwin-rebuild switch --flake ~/dot && exec zsh";
+      lg = "lazygit";
       tmuxa = "tmux new-session -A";
       tmuxl = "tmux list-sessions";
     };
@@ -206,4 +203,6 @@
   };
 
   programs.lsd.enable = true;
+
+  programs.gh.enable = true;
 }
