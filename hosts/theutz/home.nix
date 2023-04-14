@@ -172,6 +172,17 @@
       tmux-fzf
       vim-tmux-focus-events
       vim-tmux-navigator
+      (mkTmuxPlugin
+        {
+          pluginName = "autoreload";
+          version = "unstable-2023-04-15";
+          src = pkgs.fetchFromGitHub {
+            owner = "b0o";
+            repo = "tmux-autoreload";
+            rev = "e98aa3b74cfd5f2df2be2b5d4aa4ddcc843b2eba";
+            sha256 = "sha256-9Rk+VJuDqgsjc+gwlhvX6uxUqpxVD1XJdQcsc5s4pU4";
+          };
+        })
     ];
     mouse = true;
     extraConfig = ''
