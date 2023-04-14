@@ -25,6 +25,7 @@
     ripgrep
     tree
     ranger
+    entr
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -170,7 +171,6 @@
       sessionist
       resurrect
       tmux-fzf
-      vim-tmux-focus-events
       (mkTmuxPlugin {
         pluginName = "tmux.nvim";
         version = "unstable-2023-04-15";
@@ -181,17 +181,6 @@
           sha256 = "sha256-QsTuzVfUL7ovK4KWU77giFqYiH5p0RifX+n0lBViu/4";
         };
       })
-      (mkTmuxPlugin
-        {
-          pluginName = "autoreload";
-          version = "unstable-2023-04-15";
-          src = pkgs.fetchFromGitHub {
-            owner = "b0o";
-            repo = "tmux-autoreload";
-            rev = "e98aa3b74cfd5f2df2be2b5d4aa4ddcc843b2eba";
-            sha256 = "sha256-9Rk+VJuDqgsjc+gwlhvX6uxUqpxVD1XJdQcsc5s4pU4";
-          };
-        })
     ];
     mouse = true;
     extraConfig = ''
@@ -233,4 +222,5 @@
   programs.gh.enable = true;
   programs.direnv.enable = true;
   programs.zoxide.enable = true;
+  programs.bash.enable = true;
 }
