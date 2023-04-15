@@ -11,10 +11,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    devenv.url = "github:cachix/devenv/latest";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, devenv, ... }: {
+  outputs = { self, nixpkgs, darwin, home-manager, ... }: {
     darwinConfigurations."theutz" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
@@ -26,7 +25,7 @@
           home-manager.users.michael = import ./hosts/theutz/home.nix;
         }
       ];
-      inputs = { inherit devenv darwin nixpkgs; };
+      inputs = { inherit darwin nixpkgs; };
     };
   };
 }

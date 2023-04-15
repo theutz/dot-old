@@ -1,4 +1,4 @@
-{ config, pkgs, devenv, ... }:
+{ config, pkgs, ... }:
 
 {
   home = {
