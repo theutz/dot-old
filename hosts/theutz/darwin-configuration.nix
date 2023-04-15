@@ -22,14 +22,12 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
+
   users = {
     users.michael = {
       home = /Users/michael;
     };
   };
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
 
   services.karabiner-elements.enable = true;
 }
