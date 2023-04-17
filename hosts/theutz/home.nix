@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  xdg.enable = true;
+
   home = {
     stateVersion = "22.11"; # Please read the comment before changing.
 
@@ -195,5 +197,7 @@
     zoxide.enable = true;
 
     bash.enable = true;
+
+    bat.enable = true;
   };
 }
