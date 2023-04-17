@@ -252,6 +252,7 @@
           "<esc>" = clearSearchWithEscape;
           "<leader>/" = searchInFiles;
           "<leader><space>" = findFiles;
+          "<leader>bb" = { action = "<cmd>Telescope buffers<cr>"; desc = "List buffers"; };
           "<leader>fe" = { action = "<cmd>Neotree<cr>"; desc = "Open file explorer"; };
           "<leader>ff" = findFiles;
           "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
@@ -327,7 +328,12 @@
         require('tmux').setup()
         local wk = require('which-key')
         wk.register({
-          f = "files"
+          b = "buffers",
+          f = "files",
+          g = "git",
+          o = "open",
+          q = "quit/session",
+          s = "search"
         }, { prefix = "<leader>" })
       '';
       extraConfigLuaPost = ''
