@@ -1,6 +1,12 @@
-{ config, pkgs, nixvim, ... }:
+{ config, pkgs, nixvim, nix-colors, ... }:
 {
-  imports = [nixvim.homeManagerModules.nixvim];
+  imports = [
+    nixvim.homeManagerModules.nixvim
+    nix-colors.homeManagerModule
+  ];
+
+  colorScheme = nix-colors.colorSchemes.dracula;
+
   xdg.enable = true;
 
   home = {

@@ -15,13 +15,14 @@
       url = "github:pta2002/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, nixvim, ... }: {
+  outputs = { self, nixpkgs, darwin, home-manager, nixvim, nix-colors, ... }: {
     darwinConfigurations."theutz" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [./hosts/theutz/darwin-configuration.nix];
-      specialArgs = { inherit nixvim home-manager; };
+      specialArgs = { inherit nixvim nix-colors home-manager; };
     };
   };
 }
