@@ -239,15 +239,32 @@
       globals = {
         mapleader = " ";
       };
-      maps = {
-        normal = {
-          "<leader><space>" = { action = "<cmd>Telescope find_files<cr>"; desc = "Find files"; };
-          "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
+      maps = let
+        clearSearchWithEscape = { action = "<cmd>noh<cr><esc>"; desc = "Escape and clear hlsearch"; };
+      in {
+        normal = let
+          findFiles = { action = "<cmd>Telescope find_files<cr>"; desc = "Find files"; };
+          searchInFiles = { action = "<cmd>Telescope grep_string<cr>"; desc = "Search in files"; };
+          openTerminal = { action = "<cmd>FloatermToggle<cr>"; desc = "Open terminal"; };
+        in {
+          "<esc>" = clearSearchWithEscape;
+          "<leader><space>" = findFiles;
+          "<leader>/" = searchInFiles;
           "<leader>fe" = { action = "NvimTree<cr>"; desc = "Open file explorer"; };
+          "<leader>ff" = findFiles;
+          "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
           "<leader>gg" = { action = "<cmd>Neogit<cr>"; desc = "Git Status"; };
+          "<leader>ot" = openTerminal;
           "<leader>qq" = { action = "<cmd>wq<cr>"; desc = "Write and quit"; } ;
           "<leader>qs" = { action = "<cmd>SSave!<cr>"; desc = "Save session"; } ;
           "<leader>qx" = { action = "<cmd>SDelete!<cr>"; desc = "Delete session"; };
+          "<leader>sp" = searchInFiles;
+        };
+        insert = {
+          "<esc>" = clearSearchWithEscape;
+        };
+        terminal = {
+          "<esc><esc>" = { action = "<c-\\><c-n>"; desc = "Enter normal mode"; };
         };
       };
       options = {
@@ -269,7 +286,13 @@
         commentary.enable = true;
         telescope.enable = true;
         floaterm.enable = true;
-        vim-matchup.enable = true;
+        vim-matchup = {
+          enable = true;
+          matchParen.enable = true;
+        };
+        nvim-autopairs = {
+          enable = true;
+        };
         startify = {
           enable =true;
           enableSpecial = true;
