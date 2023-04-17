@@ -252,7 +252,7 @@
           "<esc>" = clearSearchWithEscape;
           "<leader><space>" = findFiles;
           "<leader>/" = searchInFiles;
-          "<leader>fe" = { action = "NvimTree<cr>"; desc = "Open file explorer"; };
+          "<leader>fe" = { action = "<cmd>Neotree<cr>"; desc = "Open file explorer"; };
           "<leader>ff" = findFiles;
           "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
           "<leader>gg" = { action = "<cmd>FloatermNew --wintype=float --width=0.9 --height=0.9 lazygit<cr>"; desc = "Git Status"; };
@@ -292,7 +292,7 @@
         emmet.enable = true;
         fugitive.enable = true;
         gitsigns.enable = true;
-        nvim-tree.enable = true;
+        neo-tree.enable = true;
         commentary.enable = true;
         telescope.enable = true;
         floaterm = {
