@@ -246,18 +246,19 @@
       in {
         normal = let
           findFiles = { action = "<cmd>Telescope find_files<cr>"; desc = "Find files"; };
-          searchInFiles = { action = "<cmd>Telescope grep_string<cr>"; desc = "Search in files"; };
+          searchInFiles = { action = "<cmd>Telescope live_grep<cr>"; desc = "Search in files"; };
           openTerminal = { action = "<cmd>FloatermToggle<cr>"; desc = "Open terminal"; };
         in {
           "<esc>" = clearSearchWithEscape;
-          "<leader><space>" = findFiles;
           "<leader>/" = searchInFiles;
+          "<leader><space>" = findFiles;
           "<leader>fe" = { action = "<cmd>Neotree<cr>"; desc = "Open file explorer"; };
           "<leader>ff" = findFiles;
           "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
           "<leader>gg" = { action = "<cmd>FloatermNew --wintype=float --width=0.9 --height=0.9 lazygit<cr>"; desc = "Git Status"; };
           "<leader>ot" = openTerminal;
           "<leader>qq" = { action = "<cmd>wq<cr>"; desc = "Write and quit"; } ;
+          "<leader>qr" = { action = "<cmd>source ~/.config/nvim/init.lua<cr>"; desc = "Reload neovim config"; };
           "<leader>qs" = { action = "<cmd>Obsession<cr>"; desc = "Toggle session tracking"; } ;
           "<leader>qx" = { action = "<cmd>Obsession!<cr>"; desc = "Delete session"; };
           "<leader>sp" = searchInFiles;
@@ -324,6 +325,10 @@
       '';
       extraConfigLua = ''
         require('tmux').setup()
+        local wk = require('which-key')
+        wk.register({
+          f = "files"
+        }, { prefix = "<leader>" })
       '';
       extraConfigLuaPost = ''
       '';
