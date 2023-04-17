@@ -98,6 +98,4 @@
     nix-daemon.enable = true;
     karabiner-elements.enable = true;
   };
-
-  security.pam.enableSudoTouchIdAuth = false;
 }
