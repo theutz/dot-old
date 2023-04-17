@@ -191,7 +191,10 @@
 
     nnn.enable = true;
 
-    lsd.enable = true;
+    lsd = {
+      enable =true;
+      enableAliases = true;
+    };
 
     gh.enable = true;
 
@@ -202,6 +205,26 @@
     bash.enable = true;
 
     bat.enable = true;
+
+    git = {
+      enable = true;
+      userName = "Michael Utz";
+      userEmail = "michael@theutz.dev";
+      delta = {
+        enable = true;
+      };
+      ignores = [
+        "*~"
+        "*.swp"
+      ];
+      signing = {
+        key = "651A36416AEFB22E";
+        signByDefault = true;
+      };
+      extraConfig = {
+        rerere.enabled = true;
+      };
+    };
 
     nixvim = {
       enable = true;
@@ -218,7 +241,10 @@
       };
       maps = {
         normal = {
+          "<leader><space>" = { action = "<cmd>Telescope find_files<cr>"; desc = "Find files"; };
           "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
+          "<leader>fe" = { action = "NvimTree<cr>"; desc = "Open file explorer"; };
+          "<leader>gg" = { action = "<cmd>Neogit<cr>"; desc = "Git Status"; };
           "<leader>qq" = { action = "<cmd>wq<cr>"; desc = "Write and quit"; } ;
           "<leader>qs" = { action = "<cmd>SSave!<cr>"; desc = "Save session"; } ;
           "<leader>qx" = { action = "<cmd>SDelete!<cr>"; desc = "Delete session"; };
@@ -239,15 +265,19 @@
         emmet.enable = true;
         gitsigns.enable = true;
         neogit.enable = true;
+        nvim-tree.enable = true;
         commentary.enable = true;
         telescope.enable = true;
         floaterm.enable = true;
+        vim-matchup.enable = true;
         startify = {
           enable =true;
           enableSpecial = true;
           sessionPersistence = true;
           sessionAutoload = true;
         };
+        tmux-navigator.enable = true;
+        treesitter.enable = true;
       };
     };
   };
