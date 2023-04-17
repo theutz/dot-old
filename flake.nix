@@ -20,23 +20,8 @@
   outputs = { self, nixpkgs, darwin, home-manager, nixvim, ... }: {
     darwinConfigurations."theutz" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      modules = [
-        ./hosts/theutz/darwin-configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.michael = nixpkgs.lib.mkMerge [
-            (import ./hosts/theutz/home.nix)
-            {
-              imports = [
-                nixvim.homeManagerModules.nixvim
-              ];
-            }
-          ];
-        }
-      ];
-      inputs = { inherit darwin nixpkgs; };
+      modules = [./hosts/theutz/darwin-configuration.nix];
+      specialArgs = { inherit nixvim home-manager; };
     };
   };
 }

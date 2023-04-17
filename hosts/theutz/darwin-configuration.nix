@@ -1,5 +1,12 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, home-manager, nixvim, ... }:
 {
+  imports = [home-manager.darwinModules.home-manager];
+
+  home-manager = {
+    users.michael = ./home.nix;
+    extraSpecialArgs = { inherit home-manager nixvim; };
+  };
+
   environment = {
     systemPackages =
       with pkgs; [

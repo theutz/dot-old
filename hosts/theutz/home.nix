@@ -1,6 +1,6 @@
 { config, pkgs, nixvim, ... }:
-
 {
+  imports = [nixvim.homeManagerModules.nixvim];
   xdg.enable = true;
 
   home = {
