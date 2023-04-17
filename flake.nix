@@ -27,11 +27,11 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.michael = nixpkgs.lib.mkMerge [
-(import ./hosts/theutz/home.nix)
-{
-  imports = [nixvim.homeManagerModules.nixvim];
-}
-];
+            (import ./hosts/theutz/home.nix)
+            {
+              imports = [nixvim.homeManagerModules.nixvim];
+            }
+          ];
         }
       ];
       inputs = { inherit darwin nixvim nixpkgs; };
