@@ -11,6 +11,7 @@
       ripgrep
       tree
       ranger
+      tldr
       (nerdfonts.override {
         fonts = [
           "FiraCode"
@@ -125,6 +126,7 @@
       mouse = true;
       baseIndex = 1;
       escapeTime = 0;
+      disableConfirmationPrompt = true;
       plugins = with pkgs.tmuxPlugins; [
         fuzzback
         nord
