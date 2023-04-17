@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   environment = {
     systemPackages =
@@ -7,7 +7,12 @@
       ];
   };
 
-  nix.package = pkgs.nixFlakes;
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes) ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

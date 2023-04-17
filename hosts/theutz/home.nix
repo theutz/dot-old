@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixvim, ... }:
 
 {
   xdg.enable = true;
@@ -117,13 +117,6 @@
       useTheme = "night-owl";
     };
 
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-    };
-
     lazygit.enable = true;
 
     tmux = {
@@ -201,5 +194,17 @@
     bash.enable = true;
 
     bat.enable = true;
+
+    nixvim = {
+      enable = true;
+      colorschemes.gruvbox.enable = true;
+      options = {
+        number = true;
+        relativenumber = true;
+        shiftwidth = 2;
+        tabstop = 2;
+        expandtab = true;
+      };
+    };
   };
 }

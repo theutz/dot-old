@@ -11,9 +11,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:pta2002/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, ... }: {
+  outputs = { self, nixpkgs, darwin, home-manager, nixvim, ... }: {
     darwinConfigurations."theutz" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
@@ -22,10 +26,15 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.michael = import ./hosts/theutz/home.nix;
+          home-manager.users.michael = nixpkgs.lib.mkMerge [
+(import ./hosts/theutz/home.nix)
+{
+  imports = [nixvim.homeManagerModules.nixvim];
+}
+];
         }
       ];
-      inputs = { inherit darwin nixpkgs; };
+      inputs = { inherit darwin nixvim nixpkgs; };
     };
   };
 }
