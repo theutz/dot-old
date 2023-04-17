@@ -29,12 +29,14 @@
           home-manager.users.michael = nixpkgs.lib.mkMerge [
             (import ./hosts/theutz/home.nix)
             {
-              imports = [nixvim.homeManagerModules.nixvim];
+              imports = [
+                nixvim.homeManagerModules.nixvim
+              ];
             }
           ];
         }
       ];
-      inputs = { inherit darwin nixvim nixpkgs; };
+      inputs = { inherit darwin nixpkgs; };
     };
   };
 }
