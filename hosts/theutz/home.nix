@@ -129,6 +129,9 @@
     tmux = {
       enable = true;
       keyMode = "vi";
+      mouse = true;
+      baseIndex = 1;
+      escapeTime = 0;
       plugins = with pkgs.tmuxPlugins; [
         fuzzback
         nord
@@ -148,7 +151,6 @@
           };
         })
       ];
-      mouse = true;
       extraConfig = ''
         TMUX_FZF_LAUNCH_KEY="C-f"
       '';
