@@ -4,6 +4,7 @@
     systemPackages =
       with pkgs; [
         vim
+        pam-reattach
       ];
   };
 
@@ -16,7 +17,22 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system = {
+    stateVersion = 4;
+    patches = [
+      (pkgs.writeText "pam.patch" ''
+        --- a/etc/pam.d/sudo
+        +++ b/etc/pam.d/sudo
+        @@ -1,4 +1,6 @@
+         # sudo: auth account password session
+        +auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so # Needed for using Touch ID within tmux
+        +auth       sufficient     pam_tid.so
+         auth       sufficient     pam_smartcard.so
+         auth       required       pam_opendirectory.so
+         account    required       pam_permit.so
+      '')
+    ];
+  };
 
   users = {
     users.michael = {
@@ -82,4 +98,6 @@
     nix-daemon.enable = true;
     karabiner-elements.enable = true;
   };
+
+  security.pam.enableSudoTouchIdAuth = false;
 }
