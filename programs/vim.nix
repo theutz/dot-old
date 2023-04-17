@@ -29,7 +29,12 @@
           "<leader>qr" = { action = "<cmd>source ~/.config/nvim/init.lua<cr>"; desc = "Reload neovim config"; };
           "<leader>qs" = { action = "<cmd>Obsession<cr>"; desc = "Toggle session tracking"; } ;
           "<leader>qx" = { action = "<cmd>Obsession!<cr>"; desc = "Delete session"; };
+          "<leader>sh" = { action = "<cmd>Telescope help_tags<cr>"; desc = "Search help"; };
           "<leader>sp" = searchInFiles;
+          "<m-h>" = "<cmd>TmuxNavigateLeft<cr>";
+          "<m-j>" = "<cmd>TmuxNavigateDown<cr>";
+          "<m-k>" = "<cmd>TmuxNavigateUp<cr>";
+          "<m-l>" = "<cmd>TmuxNavigateRight<cr>";
         };
         insert = {
           "<esc>" = clearSearchWithEscape;
@@ -51,6 +56,13 @@
         };
       };
       plugins = {
+        tmux-navigator = {
+          enable = true;
+          tmuxNavigatorSaveOnSwitch = 2;
+        };
+        todo-comments = {
+          enable = true;
+        };
         surround.enable = true;
         which-key = {
           enable = true;
@@ -85,14 +97,12 @@
         treesitter.enable = true;
       };
       extraPlugins = with pkgs.vimPlugins; [
-        tmux-nvim
         vim-obsession
         vim-sensible
       ];
       extraConfigLuaPre = ''
       '';
       extraConfigLua = ''
-        require('tmux').setup()
         local wk = require('which-key')
         wk.register({
           b = "buffers",
