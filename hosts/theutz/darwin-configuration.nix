@@ -7,7 +7,7 @@
       ];
   };
 
-  nix.package = pkgs.nix;
+  nix.package = pkgs.nixFlakes;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
