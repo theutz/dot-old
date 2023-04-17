@@ -1,11 +1,8 @@
-{ config, lib, pkgs, nixvim, nix-colors, ... }:
+{ config, lib, pkgs, nixvim, ... }:
 {
   imports = [
     nixvim.homeManagerModules.nixvim
-    nix-colors.homeManagerModule
   ];
-
-  colorScheme = nix-colors.colorSchemes.dracula;
 
   xdg.enable = true;
 
@@ -135,7 +132,6 @@
       disableConfirmationPrompt = true;
       plugins = with pkgs.tmuxPlugins; [
         fuzzback
-        nord
         extrakto
         pain-control
         sessionist
@@ -151,6 +147,16 @@
             sha256 = "sha256-QsTuzVfUL7ovK4KWU77giFqYiH5p0RifX+n0lBViu/4";
           };
         })
+        (mkTmuxPlugin {
+          pluginName = "tokyo-night";
+          version = "unstable-2023-04-17";
+          src = pkgs.fetchFromGitHub {
+            owner = "theutz";
+            repo = "tmux-tokyonight-nvim";
+            rev = "207103e4e34c83eab6f06a7789a7569a81beda03";
+            sha256 = "sha256-3Lw+d4/qysSOPwL4B9+dhY2JDF60oZAMMt5sW0ND9F0";
+          };
+        })
       ];
       extraConfig = ''
         TMUX_FZF_LAUNCH_KEY="C-f"
@@ -163,7 +169,7 @@
 
     kitty = {
       enable = true;
-      theme = config.colorScheme.name;
+      theme = "Tokyo Night Storm";
       font = {
         name = "Berkeley Mono";
         size = 15;
@@ -216,6 +222,7 @@
       ignores = [
         "*~"
         "*.swp"
+        "Session.vim"
       ];
       signing = {
         key = "651A36416AEFB22E";
@@ -231,11 +238,6 @@
       viAlias = true;
       vimAlias = true;
       editorconfig.enable = true;
-      colorschemes.base16 = {
-        enable =true;
-        useTruecolor = true;
-        colorscheme = lib.toLower config.colorScheme.name;
-      };
       globals = {
         mapleader = " ";
       };
@@ -253,11 +255,11 @@
           "<leader>fe" = { action = "NvimTree<cr>"; desc = "Open file explorer"; };
           "<leader>ff" = findFiles;
           "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
-          "<leader>gg" = { action = "<cmd>Neogit<cr>"; desc = "Git Status"; };
+          "<leader>gg" = { action = "<cmd>FloatermNew --wintype=float --width=0.9 --height=0.9 lazygit<cr>"; desc = "Git Status"; };
           "<leader>ot" = openTerminal;
           "<leader>qq" = { action = "<cmd>wq<cr>"; desc = "Write and quit"; } ;
-          "<leader>qs" = { action = "<cmd>SSave!<cr>"; desc = "Save session"; } ;
-          "<leader>qx" = { action = "<cmd>SDelete!<cr>"; desc = "Delete session"; };
+          "<leader>qs" = { action = "<cmd>Obsession<cr>"; desc = "Toggle session tracking"; } ;
+          "<leader>qx" = { action = "<cmd>Obsession!<cr>"; desc = "Delete session"; };
           "<leader>sp" = searchInFiles;
         };
         insert = {
@@ -274,18 +276,33 @@
         tabstop = 2;
         expandtab = true;
       };
+      colorschemes = {
+        tokyonight = {
+          enable = true;
+        };
+      };
       plugins = {
         surround.enable = true;
         which-key = {
           enable = true;
         };
+        lualine = {
+          enable = true;
+        };
         emmet.enable = true;
+        fugitive.enable = true;
         gitsigns.enable = true;
-        neogit.enable = true;
         nvim-tree.enable = true;
         commentary.enable = true;
         telescope.enable = true;
-        floaterm.enable = true;
+        floaterm = {
+          enable = true;
+          autoclose = 1; # keep open for non-zero exit code
+          autoinsert = true;
+          giteditor = true;
+          height = 10;
+          wintype = "split";
+        };
         vim-matchup = {
           enable = true;
           matchParen.enable = true;
@@ -293,15 +310,23 @@
         nvim-autopairs = {
           enable = true;
         };
-        startify = {
-          enable =true;
-          enableSpecial = true;
-          sessionPersistence = true;
-          sessionAutoload = true;
+        null-ls = {
+          enable = true;
         };
-        tmux-navigator.enable = true;
         treesitter.enable = true;
       };
+      extraPlugins = with pkgs.vimPlugins; [
+        tmux-nvim
+        vim-obsession
+        vim-sensible
+      ];
+      extraConfigLuaPre = ''
+      '';
+      extraConfigLua = ''
+        require('tmux').setup()
+      '';
+      extraConfigLuaPost = ''
+      '';
     };
   };
 }
