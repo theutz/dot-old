@@ -1,4 +1,4 @@
-{ config, pkgs, nixvim, nix-colors, ... }:
+{ config, lib, pkgs, nixvim, nix-colors, ... }:
 {
   imports = [
     nixvim.homeManagerModules.nixvim
@@ -163,7 +163,7 @@
 
     kitty = {
       enable = true;
-      theme = "Grape";
+      theme = config.colorScheme.name;
       font = {
         name = "Berkeley Mono";
         size = 15;
@@ -205,13 +205,49 @@
 
     nixvim = {
       enable = true;
-      colorschemes.gruvbox.enable = true;
+      viAlias = true;
+      vimAlias = true;
+      editorconfig.enable = true;
+      colorschemes.base16 = {
+        enable =true;
+        useTruecolor = true;
+        colorscheme = lib.toLower config.colorScheme.name;
+      };
+      globals = {
+        mapleader = " ";
+      };
+      maps = {
+        normal = {
+          "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
+          "<leader>qq" = { action = "<cmd>wq<cr>"; desc = "Write and quit"; } ;
+          "<leader>qs" = { action = "<cmd>SSave!<cr>"; desc = "Save session"; } ;
+          "<leader>qx" = { action = "<cmd>SDelete!<cr>"; desc = "Delete session"; };
+        };
+      };
       options = {
         number = true;
         relativenumber = true;
         shiftwidth = 2;
         tabstop = 2;
         expandtab = true;
+      };
+      plugins = {
+        surround.enable = true;
+        which-key = {
+          enable = true;
+        };
+        emmet.enable = true;
+        gitsigns.enable = true;
+        neogit.enable = true;
+        commentary.enable = true;
+        telescope.enable = true;
+        floaterm.enable = true;
+        startify = {
+          enable =true;
+          enableSpecial = true;
+          sessionPersistence = true;
+          sessionAutoload = true;
+        };
       };
     };
   };
