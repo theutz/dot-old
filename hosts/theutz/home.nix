@@ -1,36 +1,10 @@
-{ config, lib, pkgs, nixvim, ... }: {
+{ nixvim, ... }: {
   imports = [ nixvim.homeManagerModules.nixvim ../../common.nix ];
 
   xdg.enable = true;
 
   home = {
     stateVersion = "22.11"; # Please read the comment before changing.
-
-    packages = with pkgs; [
-      manix
-      ripgrep
-      tree
-      ranger
-      tldr
-      tig
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "Hack"
-          "Hasklig"
-          "RobotoMono"
-          "SourceCodePro"
-          "IBMPlexMono"
-        ];
-      })
-
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (pkgs.writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
-    ];
 
     file = {
       ".config/karabiner/karabiner.json".source = karabiner/karabiner.json;
