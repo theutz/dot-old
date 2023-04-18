@@ -55,9 +55,13 @@
           action = "<cmd>Lspsaga goto_definition<cr>";
           desc = "Go to definition";
         };
-        "<leader>cf" = {
+        "<leader>ce" = {
           action = "<cmd>Lspsaga lsp_finder<cr>";
           desc = "Finder";
+        };
+        "<leader>cf" = {
+          action = "<cmd>lua vim.lsp.buf.format()<cr>";
+          desc = "Format";
         };
         "<leader>ch" = {
           action = "<cmd>Lspsaga hover_doc<cr>";
