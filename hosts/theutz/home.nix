@@ -1,9 +1,5 @@
-{ config, lib, pkgs, nixvim, ... }:
-{
-  imports = [
-    nixvim.homeManagerModules.nixvim
-    ../../common.nix
-  ];
+{ config, lib, pkgs, nixvim, ... }: {
+  imports = [ nixvim.homeManagerModules.nixvim ../../common.nix ];
 
   xdg.enable = true;
 
@@ -16,6 +12,7 @@
       tree
       ranger
       tldr
+      tig
       (nerdfonts.override {
         fonts = [
           "FiraCode"
@@ -37,7 +34,8 @@
 
     file = {
       ".config/karabiner/karabiner.json".source = karabiner/karabiner.json;
-      ".config/karabiner/assets/complex_modifications".source = karabiner/complex_modifications;
+      ".config/karabiner/assets/complex_modifications".source =
+        karabiner/complex_modifications;
 
       # # You can also set the file content immediately.
       # ".gradle/gradle.properties".text = ''

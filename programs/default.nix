@@ -1,12 +1,5 @@
-{ pkgs, config, ... }:
-{
-  imports = [
-    ./git.nix 
-    ./kitty.nix
-    ./tmux.nix
-    ./vim.nix
-    ./zsh.nix
-  ];
+{ ... }: {
+  imports = [ ./git.nix ./kitty.nix ./tmux.nix ./vim.nix ./zsh.nix ];
 
   programs = {
     home-manager.enable = true;
@@ -19,14 +12,14 @@
     fzf.enable = true;
     nnn.enable = true;
     lsd = {
-      enable =true;
+      enable = true;
       enableAliases = true;
     };
 
     gh = {
       enable = true;
       # TODO: Make a nix package for github/gh-projects
-      extensions = with pkgs; [];
+      extensions = [ ];
     };
     direnv.enable = true;
     zoxide.enable = true;
