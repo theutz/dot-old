@@ -18,6 +18,7 @@
       };
       extraConfig = {
         rerere.enabled = true;
+        init.defaultBranch = "main";
       };
     };
 

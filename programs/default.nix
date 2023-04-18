@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./git.nix 
@@ -22,7 +22,12 @@
       enable =true;
       enableAliases = true;
     };
-    gh.enable = true;
+
+    gh = {
+      enable = true;
+      # TODO: Make a nix package for github/gh-projects
+      extensions = with pkgs; [];
+    };
     direnv.enable = true;
     zoxide.enable = true;
     bash.enable = true;
