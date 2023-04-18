@@ -21,7 +21,14 @@
       # TODO: Make a nix package for github/gh-projects
       extensions = [ ];
     };
-    direnv.enable = true;
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    btop.enable = true;
+    htop.enable = true;
     zoxide.enable = true;
     bash.enable = true;
     bat.enable = true;
