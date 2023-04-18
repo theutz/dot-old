@@ -25,7 +25,7 @@
           "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
           "<leader>gg" = { action = "<cmd>FloatermNew --wintype=float --width=0.9 --height=0.9 lazygit<cr>"; desc = "Git Status"; };
           "<leader>ot" = openTerminal;
-          "<leader>qq" = { action = "<cmd>wq<cr>"; desc = "Write and quit"; } ;
+          "<leader>qq" = { action = "<cmd>xa<cr>"; desc = "Write and quit"; } ;
           "<leader>qr" = { action = "<cmd>source ~/.config/nvim/init.lua<cr>"; desc = "Reload neovim config"; };
           "<leader>qs" = { action = "<cmd>Obsession<cr>"; desc = "Toggle session tracking"; } ;
           "<leader>qx" = { action = "<cmd>Obsession!<cr>"; desc = "Delete session"; };
@@ -49,6 +49,8 @@
         shiftwidth = 2;
         tabstop = 2;
         expandtab = true;
+        splitbelow = true;
+        splitright = true;
       };
       colorschemes = {
         tokyonight = {
