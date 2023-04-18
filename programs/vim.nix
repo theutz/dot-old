@@ -34,6 +34,7 @@
           "<leader>ff" = findFiles;
           "<leader>fs" = { action = "<cmd>w<cr>"; desc = "Save file"; };
           "<leader>gg" = { action = "<cmd>FloatermNew --wintype=float --width=0.9 --height=0.9 lazygit<cr>"; desc = "Git Status"; };
+          "<leader>gm" = { action = "<cmd>GitMessenger<cr>"; desc = "Git Messenger"; };
           "<leader>ot" = openTerminal;
           "<leader>qq" = { action = "<cmd>xa<cr>"; desc = "Write and quit"; } ;
           "<leader>qr" = { action = "<cmd>source ~/.config/nvim/init.lua<cr>"; desc = "Reload neovim config"; };
@@ -99,6 +100,9 @@
           giteditor = true;
           height = 10;
           wintype = "split";
+        };
+        gitmessenger = {
+          enable = true;
         };
         vim-matchup = {
           enable = true;
