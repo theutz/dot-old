@@ -1,13 +1,14 @@
-{ config, ... }:
+{ ... }:
 {
     programs.zsh = {
       enable = true;
-      shellAliases = rec {
+      shellAliases = {
         dot = "nvim ~/dot";
         dots = "darwin-rebuild switch --flake ~/dot && exec zsh";
         lg = "lazygit";
         tmuxa = "tmux new-session -A";
         tmuxl = "tmux list-sessions";
+        n = "nvim -S";
       };
 
       prezto = {
