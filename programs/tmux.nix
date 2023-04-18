@@ -13,6 +13,7 @@
         pain-control
         sessionist
         resurrect
+        vim-tmux-navigator
         {
           plugin = tmux-fzf;
           extraConfig = ''

@@ -5,9 +5,19 @@
       viAlias = true;
       vimAlias = true;
       editorconfig.enable = true;
+
+      autoCmd = [
+        {
+          event = ["VimResized"];
+          pattern = ["*"];
+          command = "wincmd =";
+        }
+      ];
+
       globals = {
         mapleader = " ";
       };
+
       maps = let
         clearSearchWithEscape = { action = "<cmd>noh<cr><esc>"; desc = "Escape and clear hlsearch"; };
       in {
@@ -43,6 +53,7 @@
           "<esc><esc>" = { action = "<c-\\><c-n>"; desc = "Enter normal mode"; };
         };
       };
+
       options = {
         number = true;
         relativenumber = true;
@@ -51,12 +62,15 @@
         expandtab = true;
         splitbelow = true;
         splitright = true;
+        equalalways = true;
       };
+
       colorschemes = {
         tokyonight = {
           enable = true;
         };
       };
+
       plugins = {
         tmux-navigator = {
           enable = true;
