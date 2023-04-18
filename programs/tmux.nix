@@ -19,15 +19,6 @@
           TMUX_FZF_LAUNCH_KEY="C-f"
         '';
       }
-      {
-        plugin = tilish;
-        extraConfig = ''
-          set -g @tilish-default 'main-horizontal'
-          set -g @tilish-dmenu 'on'
-          set -g @tilish-navigator 'on'
-
-        '';
-      }
       (mkTmuxPlugin {
         pluginName = "tokyonight";
         version = "unstable-2023-04-17";
