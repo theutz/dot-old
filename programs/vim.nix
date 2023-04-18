@@ -151,10 +151,6 @@
     colorschemes = { tokyonight = { enable = true; }; };
 
     plugins = {
-      tmux-navigator = {
-        enable = true;
-        tmuxNavigatorSaveOnSwitch = 2;
-      };
       todo-comments = { enable = true; };
       lastplace.enable = true;
       surround.enable = true;
@@ -200,15 +196,15 @@
         enable = true;
         keymaps = {
           diagnostic = {
-            "<leader>j" = "goto_next";
-            "<leader>k" = "goto_prev";
+            # "<leader>j" = "goto_next";
+            # "<leader>k" = "goto_prev";
           };
           lspBuf = {
-            K = "hover";
-            gD = "references";
-            gd = "definition";
-            gi = "implementation";
-            gt = "type_definition";
+            # K = "hover";
+            # gD = "references";
+            # gd = "definition";
+            # gi = "implementation";
+            # gt = "type_definition";
           };
         };
         servers = {
@@ -232,9 +228,14 @@
       lsp-lines.enable = true;
       nix.enable = true;
     };
-    extraPlugins = with pkgs.vimPlugins; [ vim-obsession vim-sensible ];
+    extraPlugins = with pkgs.vimPlugins; [
+      vim-obsession
+      vim-sensible
+      tmux-nvim
+    ];
     extraConfigLuaPre = "";
     extraConfigLua = ''
+      require('tmux').setup()
       local wk = require('which-key')
       wk.register({
         b = "buffers",

@@ -20,6 +20,16 @@
         '';
       }
       (mkTmuxPlugin {
+        pluginName = "tmux.nvim";
+        version = "unstable-2023-04-15";
+        src = pkgs.fetchFromGitHub {
+          owner = "aserowy";
+          repo = "tmux.nvim";
+          rev = "b6da35847df972f50df27d938b6e5ea09bcc8391";
+          sha256 = "sha256-QsTuzVfUL7ovK4KWU77giFqYiH5p0RifX+n0lBViu/4";
+        };
+      })
+      (mkTmuxPlugin {
         pluginName = "tokyonight";
         version = "unstable-2023-04-17";
         src = pkgs.fetchFromGitHub {
