@@ -7,9 +7,7 @@
     stateVersion = "22.11"; # Please read the comment before changing.
 
     file = {
-      ".config/karabiner/karabiner.json".source = karabiner/karabiner.json;
-      ".config/karabiner/assets/complex_modifications".source =
-        karabiner/complex_modifications;
+      ".config/karabiner/karabiner.json".source = ./karabiner.json;
 
       # # You can also set the file content immediately.
       # ".gradle/gradle.properties".text = ''

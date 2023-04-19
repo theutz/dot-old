@@ -22,12 +22,34 @@
             "manipulators": [
               {
                 "from": {
+                  "key_code": "grave_accent_and_tilde",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "caps_lock"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "keyboard_types": [
+                      "iso"
+                    ],
+                    "type": "keyboard_type_if"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
                   "key_code": "caps_lock",
                   "modifiers": {
                     "optional": [
-                      "left_control",
-                      "left_option",
-                      "left_command"
+                      "any"
                     ]
                   }
                 },
@@ -39,27 +61,6 @@
                 "to_if_alone": [
                   {
                     "key_code": "escape"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Right Shift + Caps Lock = Caps Lock",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "caps_lock",
-                  "modifiers": {
-                    "mandatory": [
-                      "right_shift"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "caps_lock"
                   }
                 ],
                 "type": "basic"
@@ -162,28 +163,7 @@
           },
           "ignore": false,
           "manipulate_caps_lock_led": true,
-          "simple_modifications": [
-            {
-              "from": {
-                "key_code": "grave_accent_and_tilde"
-              },
-              "to": [
-                {
-                  "key_code": "caps_lock"
-                }
-              ]
-            },
-            {
-              "from": {
-                "key_code": "non_us_backslash"
-              },
-              "to": [
-                {
-                  "key_code": "grave_accent_and_tilde"
-                }
-              ]
-            }
-          ],
+          "simple_modifications": [],
           "treat_as_built_in_keyboard": false
         },
         {
@@ -211,28 +191,7 @@
           },
           "ignore": false,
           "manipulate_caps_lock_led": true,
-          "simple_modifications": [
-            {
-              "from": {
-                "key_code": "grave_accent_and_tilde"
-              },
-              "to": [
-                {
-                  "key_code": "caps_lock"
-                }
-              ]
-            },
-            {
-              "from": {
-                "key_code": "non_us_backslash"
-              },
-              "to": [
-                {
-                  "key_code": "grave_accent_and_tilde"
-                }
-              ]
-            }
-          ],
+          "simple_modifications": [],
           "treat_as_built_in_keyboard": false
         }
       ],
@@ -367,7 +326,7 @@
       "selected": true,
       "simple_modifications": [],
       "virtual_hid_keyboard": {
-        "country_code": 0,
+        "country_code": 1,
         "indicate_sticky_modifier_keys_state": true,
         "mouse_key_xy_scale": 100
       }
