@@ -47,6 +47,7 @@
       bind R source-file $HOME/.config/tmux/tmux.conf \; \
         display-message "Reloaded config!"
       bind C-l send-keys C-l
+      bind / "popup 'tmux list-keys | fzf'"
     '';
   };
 }
