@@ -18,9 +18,36 @@
         },
         "rules": [
           {
-            "description": "Caps Lock > Escape",
+            "description": "ISO Tilde",
             "manipulators": [
               {
+                "type": "basic",
+                "from": {
+                  "key_code": "non_us_backslash",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "grave_accent_and_tilde"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "input_source_if",
+                    "input_sources": [
+                      {
+                        "language": "en"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
                 "from": {
                   "key_code": "grave_accent_and_tilde",
                   "modifiers": {
@@ -31,19 +58,25 @@
                 },
                 "to": [
                   {
-                    "key_code": "caps_lock"
+                    "key_code": "left_shift"
                   }
                 ],
                 "conditions": [
                   {
-                    "keyboard_types": [
-                      "iso"
-                    ],
-                    "type": "keyboard_type_if"
+                    "type": "input_source_if",
+                    "input_sources": [
+                      {
+                        "language": "en"
+                      }
+                    ]
                   }
-                ],
-                "type": "basic"
-              },
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Caps Lock > Escape",
+            "manipulators": [
               {
                 "from": {
                   "key_code": "caps_lock",
