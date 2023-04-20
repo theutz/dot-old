@@ -19,6 +19,7 @@
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      DIRENV_LOG_FORMAT = null;
     };
   };
 }
