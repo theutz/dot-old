@@ -39,6 +39,14 @@
           action = "<cmd>FloatermToggle<cr>";
           desc = "Open terminal";
         };
+        nextBuffer = {
+          action = "<cmd>BufferNext<cr>";
+          desc = "Next buffer";
+        };
+        prevBuffer = {
+          action = "<cmd>BufferPrevious<cr>";
+          desc = "Prev buffer";
+        };
       in {
         "<esc>" = clearSearchWithEscape;
         "<leader>/" = searchInFiles;
@@ -47,6 +55,12 @@
           action = "<cmd>Telescope buffers<cr>";
           desc = "List buffers";
         };
+        "<leader>bd" = {
+          action = "<cmd>Bdelete<cr>";
+          desc = "Delete buffer";
+        };
+        "<leader>bn" = nextBuffer;
+        "<leader>bp" = prevBuffer;
         "<leader>ca" = {
           action = "<cmd>Lspsaga code_action<cr>";
           desc = "Code action";
@@ -155,6 +169,7 @@
     colorschemes = { tokyonight = { enable = true; }; };
 
     plugins = {
+      barbar = { enable = true; };
       todo-comments = { enable = true; };
       lastplace.enable = true;
       surround.enable = true;
