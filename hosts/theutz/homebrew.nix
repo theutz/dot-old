@@ -1,16 +1,10 @@
-{ ... }:
-{
+{ ... }: {
   homebrew = {
     enable = true;
-    onActivation = {
-      cleanup = "zap";
-    };
+    onActivation = { cleanup = "zap"; };
 
     taps = [ ];
-    brews = [
-      "asdf"
-      "yadm"
-    ];
+    brews = [ "asdf" "yadm" ];
     casks = [
       "1password-cli"
       "dash"
@@ -28,6 +22,7 @@
       "ngrok"
       "nordvpn"
       "openvpn-connect"
+      "parallels"
       "ray"
       "slack"
       "spotify"
