@@ -7,7 +7,6 @@
       lg = "lazygit";
       tmuxa = "tmux new-session -A";
       tmuxl = "tmux list-sessions";
-      n = "nvim -S";
     };
     initExtra = ''
       export DIRENV_LOG_FORMAT=
