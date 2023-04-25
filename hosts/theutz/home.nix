@@ -8,6 +8,10 @@
 
     file = {
       ".config/karabiner/karabiner.json".source = ./karabiner.json;
+      ".config/nvim" = {
+        source = ../../config/neovim;
+        recursive = true;
+      };
 
       # # You can also set the file content immediately.
       # ".gradle/gradle.properties".text = ''

@@ -56,13 +56,13 @@
     };
 
     neovim = {
-    	enable = true;
-	defaultEditor = true;
-	viAlias = true;
-	vimAlias = true;
-	withNodeJs = true;
-	withRuby = true;
-	withPython3 = true;
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      withNodeJs = true;
+      withRuby = true;
+      withPython3 = true;
     };
     direnv = {
       enable = true;
