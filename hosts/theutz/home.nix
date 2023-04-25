@@ -1,28 +1,16 @@
 { ... }: {
   imports = [ ../../common.nix ];
 
-  xdg.enable = true;
+  home.stateVersion = "22.11"; # Please read the comment before changing.
 
-  home = {
-    stateVersion = "22.11"; # Please read the comment before changing.
-
-    file = {
-      ".config/karabiner/karabiner.json".source = ./karabiner.json;
-      ".config/nvim" = {
-        source = ../../config/neovim;
-        recursive = true;
-      };
-
-      # # You can also set the file content immediately.
-      # ".gradle/gradle.properties".text = ''
-      #   org.gradle.console=verbose
-      #   org.gradle.daemon.idletimeout=3600000
-      # '';
+  xdg.configFile = {
+    "karabiner/karabiner.json" = {
+      source = ./karabiner.json;
     };
+  };
 
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-    };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 }
