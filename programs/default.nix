@@ -4,7 +4,6 @@
     ./git.nix
     ./kitty.nix
     ./tmux.nix
-    ./vim.nix
     ./zsh.nix
   ];
 
@@ -56,6 +55,15 @@
       extensions = [ ];
     };
 
+    neovim = {
+    	enable = true;
+	defaultEditor = true;
+	viAlias = true;
+	vimAlias = true;
+	withNodeJs = true;
+	withRuby = true;
+	withPython3 = true;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;

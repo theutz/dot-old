@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager, nixvim, nix-colors, ... }:
+{ config, pkgs, lib, home-manager, ... }:
 {
   imports = [
     home-manager.darwinModules.home-manager
@@ -8,7 +8,7 @@
 
   home-manager = {
     users.michael = ./home.nix;
-    extraSpecialArgs = { inherit home-manager nix-colors nixvim; };
+    extraSpecialArgs = { inherit home-manager; };
   };
 
   environment = {

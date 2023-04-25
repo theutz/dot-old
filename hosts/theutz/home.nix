@@ -1,5 +1,5 @@
-{ nixvim, ... }: {
-  imports = [ nixvim.homeManagerModules.nixvim ../../common.nix ];
+{ ... }: {
+  imports = [ ../../common.nix ];
 
   xdg.enable = true;
 
