@@ -1,5 +1,12 @@
 { pkgs, ... }: {
-  imports = [ ./git.nix ./kitty.nix ./tmux.nix ./vim.nix ./zsh.nix ];
+  imports = [
+    ../modules/default.nix
+    ./git.nix
+    ./kitty.nix
+    ./tmux.nix
+    ./vim.nix
+    ./zsh.nix
+  ];
 
   home.packages = with pkgs; [
     manix
@@ -29,6 +36,7 @@
 
   programs = {
     home-manager.enable = true;
+    nb = { enable = true; };
     oh-my-posh = {
       enable = true;
       useTheme = "night-owl";
