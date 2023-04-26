@@ -57,7 +57,6 @@
     "Talon" = 1492913323;
     "Tureng" = 854063979;
   };
-
   system.patches = [
     (pkgs.writeText "pam.patch" ''
       --- a/etc/pam.d/sudo

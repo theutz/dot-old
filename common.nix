@@ -14,6 +14,7 @@
     pkgs.tree
     pkgs.ranger
     pkgs.tldr
+    pkgs.fd
     pkgs.tig
     pkgs.php82
     pkgs.php82Packages.composer
@@ -155,12 +156,21 @@
     lg = "lazygit";
     tmuxa = "tmux new-session -A";
     tmuxl = "tmux list-sessions";
+    cat = "bat";
+    md = "mkdir -p";
   };
   programs.zsh.initExtra = ''
     export DIRENV_LOG_FORMAT=
     autoload edit-command-line; zle -N edit-command-line
     bindkey -M vicmd v edit-command-line
   '';
+  programs.zsh.envExtra = ''
+    path+=${config.xdg.configHome}/composer/vendor/bin
+  '';
+  home.activation.composer = ''
+    ${pkgs.php82Packages.composer}/bin/composer -d ${config.xdg.configHome}/composer global install
+  '';
+  xdg.configFile."composer/composer.json".source = ./config/composer/composer.json;
   programs.zsh.prezto.enable = true;
   programs.zsh.prezto.extraModules = [ "attr" "stat" ];
   programs.zsh.prezto.extraFunctions = [ "zargs" "zmv" ];
