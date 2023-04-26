@@ -1,24 +1,21 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ./modules/nb.nix
-  ];
+  imports = [ ./modules/nb.nix ];
 
-  xdg.enable = true;
-
-  xdg.configFile.nvim = {
-    source = ./config/neovim;
-    recursive = true;
-  };
-
-  home.packages = with pkgs; [
-    manix
-    ripgrep
-    tree
-    ranger
-    tldr
-    tig
-    (nerdfonts.override {
+  home.stateVersion = "22.11"; # Please read the comment before changing.
+  home.sessionVariables.EDITOR = "nvim";
+  home.sessionVariables.VISUAL = "nvim";
+  home.file.".nbrc".text = ''
+    export NB_AUTO_SYNC=1
+  '';
+  home.packages = [
+    pkgs.manix
+    pkgs.ripgrep
+    pkgs.tree
+    pkgs.ranger
+    pkgs.tldr
+    pkgs.tig
+    (pkgs.nerdfonts.override {
       fonts = [
         "FiraCode"
         "Hack"
@@ -28,7 +25,6 @@
         "IBMPlexMono"
       ];
     })
-
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -36,7 +32,9 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
+  xdg.enable = true;
+  xdg.configFile.nvim.source = ./config/neovim;
+  xdg.configFile.nvim.recursive = true;
   programs.home-manager.enable = true;
   programs.nb.enable = true;
   programs.oh-my-posh.enable = true;
@@ -105,20 +103,20 @@
   programs.tmux.baseIndex = 1;
   programs.tmux.escapeTime = 0;
   programs.tmux.disableConfirmationPrompt = true;
-  programs.tmux.plugins = with pkgs.tmuxPlugins; [
-    fuzzback
-    extrakto
-    pain-control
-    sessionist
-    resurrect
-    vim-tmux-navigator
+  programs.tmux.plugins = [
+    pkgs.tmuxPlugins.fuzzback
+    pkgs.tmuxPlugins.extrakto
+    pkgs.tmuxPlugins.pain-control
+    pkgs.tmuxPlugins.sessionist
+    pkgs.tmuxPlugins.resurrect
+    pkgs.tmuxPlugins.vim-tmux-navigator
     {
-      plugin = tmux-fzf;
+      plugin = pkgs.tmuxPlugins.tmux-fzf;
       extraConfig = ''
         TMUX_FZF_LAUNCH_KEY="C-f"
       '';
     }
-    (mkTmuxPlugin {
+    (pkgs.tmuxPlugins.mkTmuxPlugin {
       pluginName = "tmux.nvim";
       version = "unstable-2023-04-15";
       src = pkgs.fetchFromGitHub {
@@ -128,7 +126,7 @@
         sha256 = "sha256-QsTuzVfUL7ovK4KWU77giFqYiH5p0RifX+n0lBViu/4";
       };
     })
-    (mkTmuxPlugin {
+    (pkgs.tmuxPlugins.mkTmuxPlugin {
       pluginName = "tokyonight";
       version = "unstable-2023-04-17";
       src = pkgs.fetchFromGitHub {
@@ -161,7 +159,6 @@
     autoload edit-command-line; zle -N edit-command-line
     bindkey -M vicmd v edit-command-line
   '';
-
   programs.zsh.prezto.enable = true;
   programs.zsh.prezto.extraModules = [ "attr" "stat" ];
   programs.zsh.prezto.extraFunctions = [ "zargs" "zmv" ];
