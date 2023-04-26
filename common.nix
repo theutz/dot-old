@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [ ./modules/nb.nix ];
+  imports = [ ./modules/programs/nb.nix ];
 
   home.stateVersion = "22.11"; # Please read the comment before changing.
   home.sessionVariables.EDITOR = "nvim";
