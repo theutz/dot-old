@@ -1,93 +1,61 @@
 { config, pkgs, lib, home-manager, ... }:
 {
-  imports = [
-    home-manager.darwinModules.home-manager
+  imports = [ home-manager.darwinModules.home-manager ];
+
+  home-manager.users.michael = ./home.nix;
+  home-manager.extraSpecialArgs = { inherit home-manager; };
+  environment.systemPackages = [ pkgs.vim pkgs.pam-reattach ];
+  nix.package = pkgs.nixFlakes;
+  nix.extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes) ''
+    experimental-features = nix-command flakes
+    trusted-users = root michael
+  '';
+  system.stateVersion = 4;
+  users.users.michael.home = /Users/michael;
+  programs.zsh.enable = true;
+  services.nix-daemon.enable = true;
+  services.karabiner-elements.enable = true;
+  homebrew.enable = true;
+  homebrew.onActivation.cleanup = "zap";
+  homebrew.taps = [ ];
+  homebrew.brews = [ "asdf" "yadm" ];
+  homebrew.casks = [
+    "1password-cli"
+    "dash"
+    "discord"
+    "figma"
+    "google-chrome"
+    "gpg-suite"
+    "helo"
+    "httpie"
+    "kaleidoscope"
+    "keybase"
+    "kindle"
+    "kitty"
+    "loom"
+    "ngrok"
+    "nordvpn"
+    "openvpn-connect"
+    "parallels"
+    "ray"
+    "slack"
+    "spotify"
+    "surfshark"
+    "telegram"
+    "tinkerwell"
+    "transmit"
+    "visual-studio-code"
+    "whatsapp"
+    "zoom"
   ];
-
-  home-manager = {
-    users.michael = ./home.nix;
-    extraSpecialArgs = { inherit home-manager; };
-  };
-
-  environment = {
-    systemPackages =
-      with pkgs; [
-        vim
-        pam-reattach
-      ];
-  };
-
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes) ''
-      experimental-features = nix-command flakes
-      trusted-users = root michael
-    '';
-  };
-
-  system = {
-    stateVersion = 4;
-  };
-
-  users = {
-    users.michael = {
-      home = /Users/michael;
-    };
-  };
-
-  programs = {
-    zsh.enable = true;
-  };
-
-  services = {
-    nix-daemon.enable = true;
-    karabiner-elements.enable = true;
-  };
-
-  homebrew = {
-    enable = true;
-    onActivation = { cleanup = "zap"; };
-
-    taps = [ ];
-    brews = [ "asdf" "yadm" ];
-    casks = [
-      "1password-cli"
-      "dash"
-      "discord"
-      "figma"
-      "google-chrome"
-      "gpg-suite"
-      "helo"
-      "httpie"
-      "kaleidoscope"
-      "keybase"
-      "kindle"
-      "kitty"
-      "loom"
-      "ngrok"
-      "nordvpn"
-      "openvpn-connect"
-      "parallels"
-      "ray"
-      "slack"
-      "spotify"
-      "surfshark"
-      "telegram"
-      "tinkerwell"
-      "transmit"
-      "visual-studio-code"
-      "whatsapp"
-      "zoom"
-    ];
-    masApps = {
-      "2048 Game" = 871033113;
-      "Calendar 366 II" = 1265895169;
-      "Ground News" = 1324203419;
-      "Kindle" = 405399194;
-      "Pixelmator Pro" = 1289583905;
-      "Talon" = 1492913323;
-      "Tureng" = 854063979;
-    };
+  homebrew.masApps = {
+    "2048 Game" = 871033113;
+    "Calendar 366 II" = 1265895169;
+    "Ground News" = 1324203419;
+    "Kindle" = 405399194;
+    "Pixelmator Pro" = 1289583905;
+    "Talon" = 1492913323;
+    "Tureng" = 854063979;
   };
 
   system.patches = [
