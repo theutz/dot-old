@@ -13,4 +13,10 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
+
+  home.file = {
+    ".nbrc".text = ''
+      export NB_AUTO_SYNC=1
+    '';
+  };
 }
