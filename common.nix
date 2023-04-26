@@ -15,6 +15,8 @@
     pkgs.ranger
     pkgs.tldr
     pkgs.tig
+    pkgs.php82
+    pkgs.php82Packages.composer
     (pkgs.nerdfonts.override {
       fonts = [
         "FiraCode"
