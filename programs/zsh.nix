@@ -10,6 +10,8 @@
     };
     initExtra = ''
       export DIRENV_LOG_FORMAT=
+      autoload edit-command-line; zle -N edit-command-line
+      bindkey -M vicmd v edit-command-line
     '';
 
     prezto = {
