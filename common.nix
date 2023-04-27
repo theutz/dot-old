@@ -38,6 +38,7 @@
   xdg.enable = true;
   xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink ./config/nvim;
   xdg.configFile.nvim.recursive = true;
+  xdg.configFile."btop/btop.conf".source = ./config/btop/btop.conf;
   programs.home-manager.enable = true;
   programs.nb.enable = true;
   programs.oh-my-posh.enable = true;
