@@ -36,7 +36,7 @@
     # '')
   ];
   xdg.enable = true;
-  xdg.configFile.nvim.source = ./config/neovim;
+  xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink ./config/nvim;
   xdg.configFile.nvim.recursive = true;
   programs.home-manager.enable = true;
   programs.nb.enable = true;
