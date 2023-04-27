@@ -13,6 +13,7 @@
     pkgs.tldr
     pkgs.fd
     pkgs.tig
+    pkgs.duf
     pkgs.php82
     pkgs.php82Packages.composer
     (pkgs.nerdfonts.override {
