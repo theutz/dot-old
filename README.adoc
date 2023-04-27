@@ -1,0 +1,4 @@
+= Dot
+:nix-url: https://nixos.org
+
+A bespoke link:{nix-url}[Nix] flake for only the dottiest of files.
