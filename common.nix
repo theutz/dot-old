@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [ ./modules/programs/nb.nix ];
-
   home.stateVersion = "22.11"; # Please read the comment before changing.
-  home.sessionVariables.EDITOR = "nvim";
-  home.sessionVariables.VISUAL = "nvim";
   home.file.".nbrc".text = ''
     export NB_AUTO_SYNC=1
   '';
@@ -162,6 +159,7 @@
   };
   programs.zsh.initExtra = ''
     export DIRENV_LOG_FORMAT=
+    export DOT_DIR=$HOME/dot
     autoload edit-command-line; zle -N edit-command-line
     bindkey -M vicmd v edit-command-line
   '';
