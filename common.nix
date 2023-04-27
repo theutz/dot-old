@@ -5,6 +5,10 @@
   home.file.".nbrc".text = ''
     export NB_AUTO_SYNC=1
   '';
+  home.sessionVariables = rec {
+    EDITOR = "nvim";
+    VISUAL = EDITOR;
+  };
   home.packages = [
     pkgs.manix
     pkgs.ripgrep
@@ -106,6 +110,8 @@
   programs.tmux.baseIndex = 1;
   programs.tmux.escapeTime = 0;
   programs.tmux.disableConfirmationPrompt = true;
+  programs.tmux.newSession = true;
+  programs.tmux.terminal = "screen-256color";
   programs.tmux.plugins = [
     pkgs.tmuxPlugins.fuzzback
     pkgs.tmuxPlugins.extrakto
@@ -144,28 +150,28 @@
     })
   ];
   programs.tmux.extraConfig = ''
-    bind R source-file $HOME/.config/tmux/tmux.conf \; \
+    set-option -g detach-on-destroy off
+    bind-key R source-file $HOME/.config/tmux/tmux.conf \; \
       display-message "Reloaded config!"
-    bind C-l send-keys C-l
-    bind / "popup 'tmux list-keys | fzf'"
+    bind-key C-l send-keys C-l
+    bind-key / "popup 'tmux list-keys | fzf'"
   '';
   programs.zsh.enable = true;
   programs.zsh.shellAliases = {
-    dot = "nvim ~/dot";
-    dots = "darwin-rebuild switch --flake ~/dot && exec zsh";
+    dot = "nvim $DOT_DIR";
+    dots = "darwin-rebuild switch --flake $DOT_DIR && exec zsh";
     lg = "lazygit";
     tmuxa = "tmux new-session -A";
     tmuxl = "tmux list-sessions";
     cat = "bat";
-    md = "mkdir -p";
+    mkdir = "mkdir -p";
   };
   programs.zsh.initExtra = ''
-    export DIRENV_LOG_FORMAT=
-    export DOT_DIR=$HOME/dot
     autoload edit-command-line; zle -N edit-command-line
     bindkey -M vicmd v edit-command-line
   '';
   programs.zsh.envExtra = ''
+    export DOT_DIR=$HOME/dot
     path+=${config.xdg.configHome}/composer/vendor/bin
   '';
   home.activation.composer = ''
