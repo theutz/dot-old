@@ -12,6 +12,7 @@
     pkgs.ranger
     pkgs.tldr
     pkgs.fd
+    pkgs.doppler
     pkgs.tig
     pkgs.duf
     pkgs.php82
