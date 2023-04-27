@@ -51,7 +51,7 @@
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "0bf8fbc2ca8f8cdb6efbd0a9e32740d7a991e4c3" },
   "nvim-web-devicons": { "branch": "master", "commit": "4ec26d67d419c12a4abaea02f1b6c57b40c08d7e" },
   "octo.nvim": { "branch": "master", "commit": "66c0fe4256c4ed1c9f79977ee961d38cedf7d6c6" },
-  "oil.nvim": { "branch": "master", "commit": "873ea3b85d1fba40e92059406c3f335dd57ffba1" },
+  "oil.nvim": { "branch": "master", "commit": "a9556aa872215f5956062f24064ade55cf2baeb9" },
   "plenary.nvim": { "branch": "master", "commit": "9ac3e9541bbabd9d73663d757e4fe48a675bb054" },
   "session-lens": { "branch": "main", "commit": "b15e36782d01abacf6cd44e12f3292632064ab91" },
   "telescope-tmux.nvim": { "branch": "master", "commit": "bb719ca38dfa55260a9705bcd5bb19b037566b30" },
